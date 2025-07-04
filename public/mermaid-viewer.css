@@ -1,0 +1,103 @@
+/* Use BookStack's CSS variables for seamless theme integration */
+.mermaid-container {
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    position: relative;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.mermaid-viewport {
+    height: 100%;
+    /* This will now be 100% of the dynamically set container height */
+    overflow: hidden;
+    /* Keep this for panning/zooming when content exceeds viewport */
+    cursor: auto;
+    /* Default to normal system cursor */
+}
+
+/* Ensure viewport cursor is auto when locked, even if active.
+       The text selection (I-beam) cursor will still appear over selectable text within .mermaid-content. */
+.mermaid-viewport:not(.interaction-enabled):active {
+    cursor: auto;
+}
+
+/* Set 'grab' cursor when the viewport has the 'interactive-hover' class. */
+.mermaid-viewport.interactive-hover {
+    cursor: grab;
+}
+
+/* Set 'grabbing' cursor when the viewport has the 'interactive-pan' class. */
+.mermaid-viewport.interactive-pan {
+    cursor: grabbing !important;
+}
+
+.mermaid-content {
+    transform-origin: 0 0;
+    /* Allow text selection by default (when interaction is locked) */
+    user-select: auto;
+    /* or 'text' */
+    will-change: transform;
+}
+
+/* Disable text selection ONLY when interaction is enabled on the viewport */
+.mermaid-viewport.interaction-enabled .mermaid-content {
+    user-select: none;
+}
+
+/* SVG elements inherit cursor from the viewport when interaction is enabled. */
+.mermaid-viewport.interaction-enabled .mermaid-content svg,
+.mermaid-viewport.interaction-enabled .mermaid-content svg * {
+    cursor: inherit !important;
+    /* Force inheritance from the viewport's cursor */
+}
+
+.mermaid-content.zooming {
+    transition: transform 0.2s ease;
+}
+
+.mermaid-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+    z-index: 10;
+}
+
+.mermaid-viewer-button-base {
+    border: 1px solid #C0C0C0;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    width: 32px;
+    height: 32px;
+}
+
+.mermaid-viewer-button-base:hover {
+    background: #C8C8C8;
+}
+
+.dark-mode .mermaid-viewer-button-base {
+    background: #282828;
+    border: 1px solid #444444;
+    color: #FFFFFF;
+    /* Explicitly set to white for dark mode icons */
+}
+
+.dark-mode .mermaid-viewer-button-base:hover {
+    background: #383838;
+}
+
+.mermaid-zoom-controls {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 10;
+}
