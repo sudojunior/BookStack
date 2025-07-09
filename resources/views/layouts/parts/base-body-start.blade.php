@@ -10,8 +10,8 @@
             integrity="sha512-ecc+vlmmc1f51s2l/AeIC552wULnv9Q8bYJ4FbODxsL6jGrFoLaKnGkN5JUZNH6LBjkAYy9Q4fKqyTuFUIvvFA=="
             crossorigin="anonymous" defer referrerpolicy="no-referrer" nonce="{{ $cspNonce ?? '' }}"></script>
     {{--Use files from theme folder--}}
-    <link rel="stylesheet" href="{{ url('/theme/' . \BookStack\Facades\Theme::getTheme() . '/mermaid-viewer.css') }}">
-    <script src="{{ url('/theme/' . \BookStack\Facades\Theme::getTheme() . '/mermaid-viewer.js') }}" type="module" nonce="{{ $cspNonce ?? '' }}"></script>
+    <link rel="stylesheet" href="{{ url('/mermaid-viewer.css') }}">
+    <script src="{{ url('/mermaid-viewer.js') }}" type="module" nonce="{{ $cspNonce ?? '' }}"></script>
 @endif
 
 <script type="module" nonce="{{ $cspNonce ?? '' }}">
